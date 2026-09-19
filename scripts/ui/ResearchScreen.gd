@@ -36,13 +36,17 @@ func _setup_techs():
 		
 		var button = Button.new()
 		button.text = "Исследовать"
-		button.disabled = Game.has_tech(tech_id) or (Game.data < tech["data_cost"]) or researching
-		button.pressed.connect(func(): _start_research(tech_id))
-		hbox.add_child(button)
+		var has_tech = Game.has_tech(tech_id)
+		var can_afford = Game.data >= tech["data_cost"]
+		button.disabled = has_tech or (not can_afford) or researching
 		
-		if Game.has_tech(tech_id):
+		if has_tech:
 			button.text = "Изучено"
 			button.disabled = true
+		else:
+			button.pressed.connect(_start_research.bind(tech_id))
+		
+		hbox.add_child(button)
 		
 		tech_list.add_child(hbox)
 

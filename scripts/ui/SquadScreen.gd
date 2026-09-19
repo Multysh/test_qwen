@@ -36,7 +36,8 @@ func _setup_bots():
 		var checkbox = CheckBox.new()
 		checkbox.text = bot_type["name"]
 		checkbox.button_pressed = bot["selected"]
-		checkbox.pressed.connect(func(): Game.set_bot_selected(bot["instance_id"], checkbox.button_pressed))
+		var bot_id = bot["instance_id"]
+		checkbox.pressed.connect(_on_bot_selected.bind(bot_id, checkbox))
 		hbox.add_child(checkbox)
 		bot_checkboxes[bot["instance_id"]] = checkbox
 		
@@ -56,9 +57,10 @@ func _setup_bots():
 			var att_check = CheckBox.new()
 			att_check.text = att["name"]
 			att_check.button_pressed = att_id in bot["attachments"]
-			att_check.toggled.connect(func(enabled): _on_attachment_toggled(bot["instance_id"], att_id, enabled))
+			var att_check_id = bot["instance_id"] + "_" + att_id
+			att_check.toggled.connect(_on_attachment_toggled.bind(bot["instance_id"], att_id, att_check))
 			att_hbox.add_child(att_check)
-			attachment_boxes[bot["instance_id"] + "_" + att_id] = att_check
+			attachment_boxes[att_check_id] = att_check
 		
 		bot_list.add_child(att_hbox)
 		bot_list.add_child(VSeparator.new())
@@ -77,9 +79,12 @@ func _setup_policies():
 	
 	policy_option.item_selected.connect(_on_policy_selected)
 
-func _on_attachment_toggled(bot_id, att_id, enabled):
-	Game.toggle_attachment(bot_id, att_id)
+func _on_attachment_toggled(bot_id, att_id, att_check):
+	Game.toggle_attachment(bot_id, att_id, att_check.button_pressed)
 	_setup_bots()
+
+func _on_bot_selected(bot_id, checkbox):
+	Game.set_bot_selected(bot_id, checkbox.button_pressed)
 
 func _on_policy_selected(index):
 	var pol_id = policy_option.get_item_id(index)

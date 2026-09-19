@@ -10,14 +10,14 @@
 <property name="script" type="Script" resource="local://Main.gd">res://scripts/ui/Main.gd</property>
 <node name="Background" type="ColorRect">
 <property name="layout_mode" type="int">0</property>
-<property name="anchors_preset" type="15</property>
+<property name="anchors_preset" type="int">15</property>
 <property name="anchor_right" type="float">1</property>
 <property name="anchor_bottom" type="float">1</property>
 <property name="color" type="color">#1a1a2eff</property>
 </node>
 <node name="TopBar" type="PanelContainer">
 <property name="layout_mode" type="int">1</property>
-<property name="anchors_preset" type="10</property>
+<property name="anchors_preset" type="int">10</property>
 <property name="anchor_right" type="float">1</property>
 <property name="grow_horizontal" type="int">2</property>
 <node name="HBox" type="HBoxContainer">
@@ -55,18 +55,18 @@
 </node>
 <node name="Screens" type="Control">
 <property name="layout_mode" type="int">0</property>
-<property name="anchors_preset" type="15</property>
+<property name="anchors_preset" type="int">15</property>
 <property name="anchor_right" type="float">1</property>
 <property name="anchor_bottom" type="float">1</property>
 <node name="HubScreen" type="Control">
 <property name="layout_mode" type="int">0</property>
-<property name="anchors_preset" type="15</property>
+<property name="anchors_preset" type="int">15</property>
 <property name="anchor_right" type="float">1</property>
 <property name="anchor_bottom" type="float">1</property>
 <property name="script" type="Script" resource="local://HubScreen.gd">res://scripts/ui/HubScreen.gd</property>
 <node name="VBox" type="VBoxContainer">
 <property name="layout_mode" type="int">0</property>
-<property name="anchors_preset" type="8</property>
+<property name="anchors_preset" type="int">8</property>
 <property name="anchor_left" type="float">0.5</property>
 <property name="anchor_top" type="float">0.5</property>
 <property name="anchor_right" type="float">0.5</property>
@@ -93,13 +93,13 @@
 <node name="SquadScreen" type="Control">
 <property name="visible" type="bool">false</property>
 <property name="layout_mode" type="int">0</property>
-<property name="anchors_preset" type="15</property>
+<property name="anchors_preset" type="int">15</property>
 <property name="anchor_right" type="float">1</property>
 <property name="anchor_bottom" type="float">1</property>
 <property name="script" type="Script" resource="local://SquadScreen.gd">res://scripts/ui/SquadScreen.gd</property>
 <node name="VBox" type="VBoxContainer">
 <property name="layout_mode" type="int">0</property>
-<property name="anchors_preset" type="8</property>
+<property name="anchors_preset" type="int">8</property>
 <property name="anchor_left" type="float">0.5</property>
 <property name="anchor_top" type="float">0.5</property>
 <property name="anchor_right" type="float">0.5</property>
@@ -136,13 +136,13 @@
 <node name="MissionScreen" type="Control">
 <property name="visible" type="bool">false</property>
 <property name="layout_mode" type="int">0</property>
-<property name="anchors_preset" type="15</property>
+<property name="anchors_preset" type="int">15</property>
 <property name="anchor_right" type="float">1</property>
 <property name="anchor_bottom" type="float">1</property>
 <property name="script" type="Script" resource="local://MissionScreen.gd">res://scripts/ui/MissionScreen.gd</property>
 <node name="VBox" type="VBoxContainer">
 <property name="layout_mode" type="int">0</property>
-<property name="anchors_preset" type="8</property>
+<property name="anchors_preset" type="int">8</property>
 <property name="anchor_left" type="float">0.5</property>
 <property name="anchor_top" type="float">0.5</property>
 <property name="anchor_right" type="float">0.5</property>
@@ -176,13 +176,13 @@
 <node name="ResearchScreen" type="Control">
 <property name="visible" type="bool">false</property>
 <property name="layout_mode" type="int">0</property>
-<property name="anchors_preset" type="15</property>
+<property name="anchors_preset" type="int">15</property>
 <property name="anchor_right" type="float">1</property>
 <property name="anchor_bottom" type="float">1</property>
 <property name="script" type="Script" resource="local://ResearchScreen.gd">res://scripts/ui/ResearchScreen.gd</property>
 <node name="VBox" type="VBoxContainer">
 <property name="layout_mode" type="int">0</property>
-<property name="anchors_preset" type="8</property>
+<property name="anchors_preset" type="int">8</property>
 <property name="anchor_left" type="float">0.5</property>
 <property name="anchor_top" type="float">0.5</property>
 <property name="anchor_right" type="float">0.5</property>
@@ -208,13 +208,13 @@
 <node name="ArchiveScreen" type="Control">
 <property name="visible" type="bool">false</property>
 <property name="layout_mode" type="int">0</property>
-<property name="anchors_preset" type="15</property>
+<property name="anchors_preset" type="int">15</property>
 <property name="anchor_right" type="float">1</property>
 <property name="anchor_bottom" type="float">1</property>
 <property name="script" type="Script" resource="local://ArchiveScreen.gd">res://scripts/ui/ArchiveScreen.gd</property>
 <node name="VBox" type="VBoxContainer">
 <property name="layout_mode" type="int">0</property>
-<property name="anchors_preset" type="8</property>
+<property name="anchors_preset" type="int">8</property>
 <property name="anchor_left" type="float">0.5</property>
 <property name="anchor_top" type="float">0.5</property>
 <property name="anchor_right" type="float">0.5</property>
@@ -241,7 +241,7 @@
 <node name="CrisisModal" type="PanelContainer">
 <property name="visible" type="bool">false</property>
 <property name="layout_mode" type="int">0</property>
-<property name="anchors_preset" type="8</property>
+<property name="anchors_preset" type="int">8</property>
 <property name="anchor_left" type="float">0.5</property>
 <property name="anchor_top" type="float">0.5</property>
 <property name="anchor_right" type="float">0.5</property>

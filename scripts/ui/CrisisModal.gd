@@ -17,18 +17,19 @@ func show_crisis(crisis_data):
 	for choice in crisis_data["choices"]:
 		var button = Button.new()
 		button.text = choice["label"]
-		button.pressed.connect(func(): _on_choice_selected(choice))
+		var choice_data = choice
+		button.pressed.connect(_on_choice_selected.bind(choice_data))
 		choices_box.add_child(button)
 	
 	visible = true
 
 func _on_choice_selected(choice):
-	_apply_effects(choice["effects"])
+	_apply_effects(choice)
 	visible = false
 	EventBus.crisis_finished.emit()
 
-func _apply_effects(effects):
-	for effect in effects:
+func _apply_effects(choice):
+	for effect in choice["effects"]:
 		var type = effect.get("type", "")
 		var value = effect.get("value", 0)
 		

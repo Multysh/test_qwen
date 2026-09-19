@@ -19,7 +19,7 @@ func _update_archive():
 		
 		var button = Button.new()
 		button.text = archive["title"]
-		button.pressed.connect(func(): _show_entry(archive_id))
+		button.pressed.connect(_show_entry.bind(archive_id))
 		archive_list.add_child(button)
 
 func _show_entry(archive_id):

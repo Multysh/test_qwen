@@ -3,47 +3,54 @@
 *.import
 *.remap
 export_presets.cfg
-.autosave/
+.autoloads/
+.editor/
+.godot/
 
-# Build artifacts
+# Compiled and build artifacts
 *.exe
 *.dll
 *.so
 *.dylib
-*.app
-*.apk
-*.aab
-*.zip
-*.tar
-*.gz
-*.tar.gz
+*.bin
+*.o
+*.obj
+*.a
+*.lib
+*.out
 
-# Dependencies and build directories
-res://.godot/
-user://
-.build/
-dist/
+# Dependencies
+node_modules/
+venv/
+.venv/
+__pycache__/
+.mypy_cache/
+.pytest_cache/
+target/
+.gradle/
 build/
-temp/
-bin/
-obj/
+dist/
 
-# Editor files
-.vscode/
-.idea/
+# Logs and temp files
+*.log
+*.tmp
 *.swp
 *.swo
-*.tmp
-
-# Logs
-*.log
+*.bak
+*.~*
 
 # Environment
 .env
 .env.local
-*.env.*
+.env.*
 
-# OS files
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# System
 .DS_Store
 Thumbs.db
 ```
