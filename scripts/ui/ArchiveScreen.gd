@@ -1,8 +1,8 @@
 extends Control
 
-@onready var title: Label = $VBox/Title
-@onready var archive_list: VBoxContainer = $VBox/ArchiveList
-@onready var text_label: Label = $VBox/TextLabel
+@onready var title: Label = $Title
+@onready var archive_list: VBoxContainer = $ArchiveList
+@onready var text_label: Label = $TextLabel
 
 func _ready():
 	_update_archive()

@@ -1,8 +1,8 @@
 extends PanelContainer
 
-@onready var title_label: Label = $VBox/TitleLabel
-@onready var text_label: Label = $VBox/TextLabel
-@onready var choices_box: VBoxContainer = $VBox/ChoicesBox
+@onready var title_label: Label = $TitleLabel
+@onready var text_label: Label = $TextLabel
+@onready var choices_box: VBoxContainer = $ChoicesBox
 
 var current_crisis := {}
 

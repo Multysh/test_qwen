@@ -1,11 +1,11 @@
 extends Control
 
-@onready var title: Label = $VBox/Title
-@onready var bot_list: VBoxContainer = $VBox/BotList
-@onready var policy_option: OptionButton = $VBox/PolicyOption
-@onready var info_label: Label = $VBox/InfoLabel
-@onready var charge_button: Button = $VBox/ChargeButton
-@onready var start_button: Button = $VBox/StartButton
+@onready var title: Label = $Title
+@onready var bot_list: VBoxContainer = $BotList
+@onready var policy_option: OptionButton = $PolicyOptionButton
+@onready var info_label: Label = $InfoLabel
+@onready var charge_button: Button = $ChargeButton
+@onready var start_button: Button = $StartButton
 
 var bot_checkboxes := {}
 var attachment_boxes := {}
@@ -13,26 +13,20 @@ var attachment_boxes := {}
 func _ready():
 	_setup_bots()
 	_setup_policies()
-	
 	charge_button.pressed.connect(_on_charge_pressed)
 	start_button.pressed.connect(_on_start_pressed)
-	
 	EventBus.squad_changed.connect(_update_ui)
 	EventBus.resources_changed.connect(_update_ui)
-	
 	_update_ui()
 
 func _setup_bots():
 	for child in bot_list.get_children():
 		child.queue_free()
-	
 	bot_checkboxes.clear()
 	attachment_boxes.clear()
-	
 	for bot in Game.bots:
 		var bot_type = Game.get_bot_type(bot)
 		var hbox = HBoxContainer.new()
-		
 		var checkbox = CheckBox.new()
 		checkbox.text = bot_type["name"]
 		checkbox.button_pressed = bot["selected"]
@@ -40,17 +34,13 @@ func _setup_bots():
 		checkbox.pressed.connect(_on_bot_selected.bind(bot_id, checkbox))
 		hbox.add_child(checkbox)
 		bot_checkboxes[bot["instance_id"]] = checkbox
-		
 		var slots_label = Label.new()
 		slots_label.text = " Слоты: %d/%d" % [Game.get_bot_slots_used(bot), bot_type["slots"]]
 		hbox.add_child(slots_label)
-		
 		var battery_label = Label.new()
 		battery_label.text = " Батарея: %d" % Game.get_bot_battery_capacity(bot)
 		hbox.add_child(battery_label)
-		
 		bot_list.add_child(hbox)
-		
 		var att_hbox = HBoxContainer.new()
 		for att_id in GameData.ATTACHMENTS:
 			var att = GameData.ATTACHMENTS[att_id]
@@ -61,7 +51,6 @@ func _setup_bots():
 			att_check.toggled.connect(_on_attachment_toggled.bind(bot["instance_id"], att_id, att_check))
 			att_hbox.add_child(att_check)
 			attachment_boxes[att_check_id] = att_check
-		
 		bot_list.add_child(att_hbox)
 		bot_list.add_child(VSeparator.new())
 
@@ -71,12 +60,10 @@ func _setup_policies():
 		var pol = GameData.POLICIES[pol_id]
 		policy_option.add_item(pol["name"])
 		policy_option.set_item_id(policy_option.item_count - 1, pol_id)
-	
 	for i in range(policy_option.item_count):
 		if policy_option.get_item_id(i) == Game.selected_policy_id:
 			policy_option.select(i)
 			break
-	
 	policy_option.item_selected.connect(_on_policy_selected)
 
 func _on_attachment_toggled(bot_id, att_id, att_check):
@@ -95,15 +82,14 @@ func _on_charge_pressed():
 
 func _on_start_pressed():
 	if Game.can_start_mission():
-		get_parent().get_parent().start_mission()
+		get_parent()._show_screen("Mission")
+		get_node("../MissionScreen").start_mission()
 
 func _update_ui():
 	var charge_cost = Game.get_squad_charge_cost()
 	charge_button.text = "Зарядить отряд (%d энергии)" % charge_cost
 	charge_button.disabled = (charge_cost <= 0) or (Game.energy < charge_cost)
-	
 	start_button.disabled = not Game.can_start_mission()
-	
 	if Game.can_start_mission():
 		info_label.text = "Отряд готов к миссии."
 	else:

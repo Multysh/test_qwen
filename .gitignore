@@ -1,56 +1,24 @@
 ```
-# Godot-specific ignores
-*.import
-*.remap
-export_presets.cfg
-.autoloads/
-.editor/
-.godot/
-
 # Compiled and build artifacts
-*.exe
-*.dll
-*.so
-*.dylib
+*.import
 *.bin
-*.o
-*.obj
-*.a
-*.lib
-*.out
+*.tres
+*.tscn
+*.gd
 
 # Dependencies
-node_modules/
-venv/
-.venv/
-__pycache__/
-.mypy_cache/
-.pytest_cache/
-target/
-.gradle/
-build/
-dist/
+addons/
 
 # Logs and temp files
 *.log
 *.tmp
-*.swp
-*.swo
-*.bak
-*.~*
 
-# Environment
-.env
-.env.local
-.env.*
-
-# Editors
+# Editor/IDE files
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# System
-.DS_Store
-Thumbs.db
+# Export templates
+export_presets.cfg
 ```

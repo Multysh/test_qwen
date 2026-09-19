@@ -1,10 +1,10 @@
 extends Control
 
-@onready var title: Label = $VBox/Title
-@onready var progress_bar: ProgressBar = $VBox/ProgressBar
-@onready var time_label: Label = $VBox/TimeLabel
-@onready var bot_status_label: Label = $VBox/BotStatusLabel
-@onready var log_label: Label = $VBox/LogLabel
+@onready var title: Label = $Title
+@onready var progress_bar: ProgressBar = $ProgressBar
+@onready var time_label: Label = $TimeLabel
+@onready var bot_status_label: Label = $BotStatusLabel
+@onready var log_label: Label = $LogLabel
 
 var active := false
 var paused := false

@@ -1,8 +1,8 @@
 extends Control
 
-@onready var title: Label = $VBox/Title
-@onready var tech_list: VBoxContainer = $VBox/TechList
-@onready var status_label: Label = $VBox/StatusLabel
+@onready var title: Label = $Title
+@onready var tech_list: VBoxContainer = $TechList
+@onready var status_label: Label = $ResearchStatusLabel
 
 var researching := false
 var current_tech := ""
