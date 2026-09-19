@@ -1,0 +1,49 @@
+```
+# Godot-specific ignores
+*.import
+*.remap
+export_presets.cfg
+.autosave/
+
+# Build artifacts
+*.exe
+*.dll
+*.so
+*.dylib
+*.app
+*.apk
+*.aab
+*.zip
+*.tar
+*.gz
+*.tar.gz
+
+# Dependencies and build directories
+res://.godot/
+user://
+.build/
+dist/
+build/
+temp/
+bin/
+obj/
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+```

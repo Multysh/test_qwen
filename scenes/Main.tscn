@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scene type="Control" version_major="4" version_minor="0">
+<node name="Main" type="Control">
+<property name="layout_mode" type="int">3</property>
+<property name="anchors_preset" type="int">15</property>
+<property name="anchor_right" type="float">1</property>
+<property name="anchor_bottom" type="float">1</property>
+<property name="grow_horizontal" type="int">2</property>
+<property name="grow_vertical" type="int">2</property>
+<property name="script" type="Script" resource="local://Main.gd">res://scripts/ui/Main.gd</property>
+<node name="Background" type="ColorRect">
+<property name="layout_mode" type="int">0</property>
+<property name="anchors_preset" type="15</property>
+<property name="anchor_right" type="float">1</property>
+<property name="anchor_bottom" type="float">1</property>
+<property name="color" type="color">#1a1a2eff</property>
+</node>
+<node name="TopBar" type="PanelContainer">
+<property name="layout_mode" type="int">1</property>
+<property name="anchors_preset" type="10</property>
+<property name="anchor_right" type="float">1</property>
+<property name="grow_horizontal" type="int">2</property>
+<node name="HBox" type="HBoxContainer">
+<property name="layout_mode" type="int">2</property>
+<property name="theme_override_constants/separation" type="int">10</property>
+<node name="ResourcesLabel" type="Label">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string">Энергия: 100 | Металл: 50 | Данные: 0</property>
+</node>
+<node name="HubButton" type="Button">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string">Хаб</property>
+</node>
+<node name="SquadButton" type="Button">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string">Отряд</property>
+</node>
+<node name="ResearchButton" type="Button">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string">Исследования</property>
+</node>
+<node name="ArchiveButton" type="Button">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string">Архив</property>
+</node>
+<node name="SaveButton" type="Button">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string">Сохранить</property>
+</node>
+<node name="LoadButton" type="Button">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string">Загрузить</property>
+</node>
+</node>
+</node>
+<node name="Screens" type="Control">
+<property name="layout_mode" type="int">0</property>
+<property name="anchors_preset" type="15</property>
+<property name="anchor_right" type="float">1</property>
+<property name="anchor_bottom" type="float">1</property>
+<node name="HubScreen" type="Control">
+<property name="layout_mode" type="int">0</property>
+<property name="anchors_preset" type="15</property>
+<property name="anchor_right" type="float">1</property>
+<property name="anchor_bottom" type="float">1</property>
+<property name="script" type="Script" resource="local://HubScreen.gd">res://scripts/ui/HubScreen.gd</property>
+<node name="VBox" type="VBoxContainer">
+<property name="layout_mode" type="int">0</property>
+<property name="anchors_preset" type="8</property>
+<property name="anchor_left" type="float">0.5</property>
+<property name="anchor_top" type="float">0.5</property>
+<property name="anchor_right" type="float">0.5</property>
+<property name="anchor_bottom" type="float">0.5</property>
+<property name="offset_left" type="float">-150.0</property>
+<property name="offset_top" type="float">-100.0</property>
+<property name="offset_right" type="float">150.0</property>
+<property name="offset_bottom" type="float">100.0</property>
+<property name="theme_override_constants/separation" type="int">20</property>
+<node name="Title" type="Label">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string">ГЛАВНЫЙ ТЕРМИНАЛ</property>
+</node>
+<node name="InfoLabel" type="Label">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string">Выберите раздел.</property>
+</node>
+<node name="MissionButton" type="Button">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string">Перейти к отряду</property>
+</node>
+</node>
+</node>
+<node name="SquadScreen" type="Control">
+<property name="visible" type="bool">false</property>
+<property name="layout_mode" type="int">0</property>
+<property name="anchors_preset" type="15</property>
+<property name="anchor_right" type="float">1</property>
+<property name="anchor_bottom" type="float">1</property>
+<property name="script" type="Script" resource="local://SquadScreen.gd">res://scripts/ui/SquadScreen.gd</property>
+<node name="VBox" type="VBoxContainer">
+<property name="layout_mode" type="int">0</property>
+<property name="anchors_preset" type="8</property>
+<property name="anchor_left" type="float">0.5</property>
+<property name="anchor_top" type="float">0.5</property>
+<property name="anchor_right" type="float">0.5</property>
+<property name="anchor_bottom" type="float">0.5</property>
+<property name="offset_left" type="float">-300.0</property>
+<property name="offset_top" type="float">-250.0</property>
+<property name="offset_right" type="float">300.0</property>
+<property name="offset_bottom" type="float">250.0</property>
+<property name="theme_override_constants/separation" type="int">10</property>
+<node name="Title" type="Label">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string">СБОРКА ОТРЯДА</property>
+</node>
+<node name="BotList" type="VBoxContainer">
+<property name="layout_mode" type="int">2</property>
+</node>
+<node name="PolicyOption" type="OptionButton">
+<property name="layout_mode" type="int">2</property>
+</node>
+<node name="InfoLabel" type="Label">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string"></property>
+</node>
+<node name="ChargeButton" type="Button">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string">Зарядить отряд</property>
+</node>
+<node name="StartButton" type="Button">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string">Запустить миссию</property>
+</node>
+</node>
+</node>
+<node name="MissionScreen" type="Control">
+<property name="visible" type="bool">false</property>
+<property name="layout_mode" type="int">0</property>
+<property name="anchors_preset" type="15</property>
+<property name="anchor_right" type="float">1</property>
+<property name="anchor_bottom" type="float">1</property>
+<property name="script" type="Script" resource="local://MissionScreen.gd">res://scripts/ui/MissionScreen.gd</property>
+<node name="VBox" type="VBoxContainer">
+<property name="layout_mode" type="int">0</property>
+<property name="anchors_preset" type="8</property>
+<property name="anchor_left" type="float">0.5</property>
+<property name="anchor_top" type="float">0.5</property>
+<property name="anchor_right" type="float">0.5</property>
+<property name="anchor_bottom" type="float">0.5</property>
+<property name="offset_left" type="float">-300.0</property>
+<property name="offset_top" type="float">-200.0</property>
+<property name="offset_right" type="float">300.0</property>
+<property name="offset_bottom" type="float">200.0</property>
+<property name="theme_override_constants/separation" type="int">10</property>
+<node name="Title" type="Label">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string">МИССИЯ: ДОБЫЧА</property>
+</node>
+<node name="ProgressBar" type="ProgressBar">
+<property name="layout_mode" type="int">2</property>
+</node>
+<node name="TimeLabel" type="Label">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string">Время: 0 / 30 сек</property>
+</node>
+<node name="BotStatusLabel" type="Label">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string"></property>
+</node>
+<node name="LogLabel" type="Label">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string"></property>
+</node>
+</node>
+</node>
+<node name="ResearchScreen" type="Control">
+<property name="visible" type="bool">false</property>
+<property name="layout_mode" type="int">0</property>
+<property name="anchors_preset" type="15</property>
+<property name="anchor_right" type="float">1</property>
+<property name="anchor_bottom" type="float">1</property>
+<property name="script" type="Script" resource="local://ResearchScreen.gd">res://scripts/ui/ResearchScreen.gd</property>
+<node name="VBox" type="VBoxContainer">
+<property name="layout_mode" type="int">0</property>
+<property name="anchors_preset" type="8</property>
+<property name="anchor_left" type="float">0.5</property>
+<property name="anchor_top" type="float">0.5</property>
+<property name="anchor_right" type="float">0.5</property>
+<property name="anchor_bottom" type="float">0.5</property>
+<property name="offset_left" type="float">-300.0</property>
+<property name="offset_top" type="float">-200.0</property>
+<property name="offset_right" type="float">300.0</property>
+<property name="offset_bottom" type="float">200.0</property>
+<property name="theme_override_constants/separation" type="int">10</property>
+<node name="Title" type="Label">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string">ИССЛЕДОВАНИЯ</property>
+</node>
+<node name="TechList" type="VBoxContainer">
+<property name="layout_mode" type="int">2</property>
+</node>
+<node name="StatusLabel" type="Label">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string">Готово к исследованию.</property>
+</node>
+</node>
+</node>
+<node name="ArchiveScreen" type="Control">
+<property name="visible" type="bool">false</property>
+<property name="layout_mode" type="int">0</property>
+<property name="anchors_preset" type="15</property>
+<property name="anchor_right" type="float">1</property>
+<property name="anchor_bottom" type="float">1</property>
+<property name="script" type="Script" resource="local://ArchiveScreen.gd">res://scripts/ui/ArchiveScreen.gd</property>
+<node name="VBox" type="VBoxContainer">
+<property name="layout_mode" type="int">0</property>
+<property name="anchors_preset" type="8</property>
+<property name="anchor_left" type="float">0.5</property>
+<property name="anchor_top" type="float">0.5</property>
+<property name="anchor_right" type="float">0.5</property>
+<property name="anchor_bottom" type="float">0.5</property>
+<property name="offset_left" type="float">-300.0</property>
+<property name="offset_top" type="float">-200.0</property>
+<property name="offset_right" type="float">300.0</property>
+<property name="offset_bottom" type="float">200.0</property>
+<property name="theme_override_constants/separation" type="int">10</property>
+<node name="Title" type="Label">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string">АРХИВ</property>
+</node>
+<node name="ArchiveList" type="VBoxContainer">
+<property name="layout_mode" type="int">2</property>
+</node>
+<node name="TextLabel" type="Label">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string"></property>
+</node>
+</node>
+</node>
+</node>
+<node name="CrisisModal" type="PanelContainer">
+<property name="visible" type="bool">false</property>
+<property name="layout_mode" type="int">0</property>
+<property name="anchors_preset" type="8</property>
+<property name="anchor_left" type="float">0.5</property>
+<property name="anchor_top" type="float">0.5</property>
+<property name="anchor_right" type="float">0.5</property>
+<property name="anchor_bottom" type="float">0.5</property>
+<property name="offset_left" type="float">-200.0</property>
+<property name="offset_top" type="float">-150.0</property>
+<property name="offset_right" type="float">200.0</property>
+<property name="offset_bottom" type="float">150.0</property>
+<property name="script" type="Script" resource="local://CrisisModal.gd">res://scripts/ui/CrisisModal.gd</property>
+<node name="VBox" type="VBoxContainer">
+<property name="layout_mode" type="int">2</property>
+<property name="theme_override_constants/separation" type="int">10</property>
+<node name="TitleLabel" type="Label">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string">КРИЗИС</property>
+</node>
+<node name="TextLabel" type="Label">
+<property name="layout_mode" type="int">2</property>
+<property name="text" type="string">Текст кризиса</property>
+</node>
+<node name="ChoicesBox" type="VBoxContainer">
+<property name="layout_mode" type="int">2</property>
+</node>
+</node>
+</node>
+<node name="GeneratorTimer" type="Timer">
+<property name="wait_time" type="float">6.0</property>
+<property name="autostart" type="bool">true</property>
+</node>
+</node>
+</scene>
