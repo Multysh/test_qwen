@@ -31,7 +31,7 @@ func _setup_bots():
 		checkbox.text = bot_type["name"]
 		checkbox.button_pressed = bot["selected"]
 		var bot_id = bot["instance_id"]
-		checkbox.pressed.connect(_on_bot_selected.bind(bot_id, checkbox))
+		checkbox.pressed.connect(_on_bot_selected)
 		hbox.add_child(checkbox)
 		bot_checkboxes[bot["instance_id"]] = checkbox
 		var slots_label = Label.new()
@@ -59,22 +59,28 @@ func _setup_policies():
 	for pol_id in GameData.POLICIES:
 		var pol = GameData.POLICIES[pol_id]
 		policy_option.add_item(pol["name"])
-		policy_option.set_item_id(policy_option.item_count - 1, pol_id)
+		policy_option.set_item_id(policy_option.item_count - 1, hash(pol_id))
+		policy_option.set_item_metadata(policy_option.item_count - 1, pol_id)
 	for i in range(policy_option.item_count):
-		if policy_option.get_item_id(i) == Game.selected_policy_id:
+		var meta = policy_option.get_item_metadata(i)
+		if meta == Game.selected_policy_id:
 			policy_option.select(i)
 			break
 	policy_option.item_selected.connect(_on_policy_selected)
 
-func _on_attachment_toggled(bot_id, att_id, att_check):
+func _on_attachment_toggled(is_toggled, bot_id, att_id, att_check):
 	Game.toggle_attachment(bot_id, att_id, att_check.button_pressed)
 	_setup_bots()
 
-func _on_bot_selected(bot_id, checkbox):
-	Game.set_bot_selected(bot_id, checkbox.button_pressed)
+func _on_bot_selected():
+	for bot in Game.bots:
+		var checkbox = bot_checkboxes.get(bot["instance_id"])
+		if checkbox:
+			Game.set_bot_selected(bot["instance_id"], checkbox.button_pressed)
+	EventBus.squad_changed.emit()
 
 func _on_policy_selected(index):
-	var pol_id = policy_option.get_item_id(index)
+	var pol_id = policy_option.get_item_metadata(index)
 	Game.selected_policy_id = pol_id
 
 func _on_charge_pressed():

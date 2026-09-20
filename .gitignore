@@ -1,24 +1,7 @@
 ```
-# Compiled and build artifacts
+# Godot-specific ignores
 *.import
-*.bin
-*.tres
-*.tscn
-*.gd
-
-# Dependencies
-addons/
-
-# Logs and temp files
-*.log
-*.tmp
-
-# Editor/IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Export templates
+*.uid
 export_presets.cfg
+.godot/
 ```
