@@ -53,10 +53,6 @@ text = "Хаб"
 layout_mode = 2
 text = "Отряд"
 
-[node name="MissionButton" type="Button" parent="TopBar/HBox"]
-layout_mode = 2
-text = "Миссия"
-
 [node name="ResearchButton" type="Button" parent="TopBar/HBox"]
 layout_mode = 2
 text = "Исследования"
@@ -443,7 +439,6 @@ autostart = true
 [connection signal="timeout" from="GeneratorTimer" to="Main" method="_on_generator_timer_timeout"]
 [connection signal="pressed" from="TopBar/HBox/HubButton" to="Main" method="_on_hub_button_pressed"]
 [connection signal="pressed" from="TopBar/HBox/SquadButton" to="Main" method="_on_squad_button_pressed"]
-[connection signal="pressed" from="TopBar/HBox/MissionButton" to="Main" method="_on_mission_button_pressed"]
 [connection signal="pressed" from="TopBar/HBox/ResearchButton" to="Main" method="_on_research_button_pressed"]
 [connection signal="pressed" from="TopBar/HBox/ArchiveButton" to="Main" method="_on_archive_button_pressed"]
 [connection signal="pressed" from="TopBar/HBox/SaveButton" to="Main" method="_on_save_button_pressed"]

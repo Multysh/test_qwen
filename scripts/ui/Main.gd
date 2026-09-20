@@ -3,7 +3,6 @@ extends Control
 @onready var resources_label: Label = $TopBar/HBox/ResourcesLabel
 @onready var hub_button: Button = $TopBar/HBox/HubButton
 @onready var squad_button: Button = $TopBar/HBox/SquadButton
-@onready var mission_button: Button = $TopBar/HBox/MissionButton
 @onready var research_button: Button = $TopBar/HBox/ResearchButton
 @onready var archive_button: Button = $TopBar/HBox/ArchiveButton
 @onready var save_button: Button = $TopBar/HBox/SaveButton
@@ -26,7 +25,6 @@ func _ready():
 	_show_screen("Hub")
 	hub_button.pressed.connect(_on_hub_button_pressed)
 	squad_button.pressed.connect(_on_squad_button_pressed)
-	mission_button.pressed.connect(_on_mission_button_pressed)
 	research_button.pressed.connect(_on_research_button_pressed)
 	archive_button.pressed.connect(_on_archive_button_pressed)
 	save_button.pressed.connect(_on_save_button_pressed)
@@ -40,7 +38,7 @@ func _ready():
 func _update_resources():
 	resources_label.text = "Энергия: %d | Металл: %d | Данные: %d" % [Game.energy, Game.metal, Game.data]
 
-func _show_screen(screen_name):
+func _show_screen(screen_name: String):
 	current_screen = screen_name
 	hub_screen.visible = (screen_name == "Hub")
 	squad_screen.visible = (screen_name == "Squad")
@@ -48,11 +46,17 @@ func _show_screen(screen_name):
 	research_screen.visible = (screen_name == "Research")
 	archive_screen.visible = (screen_name == "Archive")
 	_update_buttons()
+	
+	if screen_name == "Squad":
+		squad_screen.refresh_ui()
+	elif screen_name == "Research":
+		research_screen.refresh_ui()
+	elif screen_name == "Archive":
+		archive_screen.refresh_ui()
 
 func _update_buttons():
 	hub_button.disabled = (current_screen == "Hub")
 	squad_button.disabled = (current_screen == "Squad") or mission_screen.is_mission_active()
-	mission_button.disabled = (current_screen == "Mission") or mission_screen.is_mission_active()
 	research_button.disabled = (current_screen == "Research") or mission_screen.is_mission_active()
 	archive_button.disabled = (current_screen == "Archive")
 
@@ -60,10 +64,6 @@ func _on_hub_button_pressed():
 	_show_screen("Hub")
 
 func _on_squad_button_pressed():
-	if not mission_screen.is_mission_active():
-		_show_screen("Squad")
-
-func _on_mission_button_pressed():
 	if not mission_screen.is_mission_active():
 		_show_screen("Squad")
 
