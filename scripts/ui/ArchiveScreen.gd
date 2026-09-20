@@ -1,0 +1,30 @@
+extends Control
+
+@onready var title: Label = $Title
+@onready var archive_list: VBoxContainer = $ArchiveList
+@onready var text_label: Label = $TextLabel
+
+func _ready():
+	_update_archive()
+	EventBus.archive_updated.connect(_update_archive)
+
+func _update_archive():
+	for child in archive_list.get_children():
+		child.queue_free()
+	
+	for archive_id in Game.unlocked_archive:
+		var archive = GameData.ARCHIVE.get(archive_id, {})
+		if archive.is_empty():
+			continue
+		
+		var button = Button.new()
+		button.text = archive["title"]
+		button.pressed.connect(_show_entry.bind(archive_id))
+		archive_list.add_child(button)
+
+func _show_entry(archive_id):
+	var archive = GameData.ARCHIVE.get(archive_id, {})
+	if archive.is_empty():
+		return
+	
+	text_label.text = archive["title"] + "\n\n" + archive["text"]

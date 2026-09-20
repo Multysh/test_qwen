@@ -1,0 +1,446 @@
+[gd_scene load_steps=9 format=3 uid="uid://main_scene"]
+
+[ext_resource type="Script" path="res://scripts/ui/Main.gd" id="1_main"]
+[ext_resource type="Script" path="res://scripts/ui/HubScreen.gd" id="2_hub"]
+[ext_resource type="Script" path="res://scripts/ui/SquadScreen.gd" id="3_squad"]
+[ext_resource type="Script" path="res://scripts/ui/MissionScreen.gd" id="4_mission"]
+[ext_resource type="Script" path="res://scripts/ui/ResearchScreen.gd" id="5_research"]
+[ext_resource type="Script" path="res://scripts/ui/ArchiveScreen.gd" id="6_archive"]
+[ext_resource type="Script" path="res://scripts/ui/CrisisModal.gd" id="7_crisis"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_main")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.15, 1)
+
+[node name="TopBar" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 1.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+
+[node name="HBox" type="HBoxContainer" parent="TopBar"]
+layout_mode = 2
+theme_override_constants/separation = 10
+size_flags_horizontal = 3
+
+[node name="ResourcesLabel" type="Label" parent="TopBar/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Энергия: 100 | Металл: 50 | Данные: 0"
+
+[node name="HubButton" type="Button" parent="TopBar/HBox"]
+layout_mode = 2
+text = "Хаб"
+
+[node name="SquadButton" type="Button" parent="TopBar/HBox"]
+layout_mode = 2
+text = "Отряд"
+
+[node name="ResearchButton" type="Button" parent="TopBar/HBox"]
+layout_mode = 2
+text = "Исследования"
+
+[node name="ArchiveButton" type="Button" parent="TopBar/HBox"]
+layout_mode = 2
+text = "Архив"
+
+[node name="SaveButton" type="Button" parent="TopBar/HBox"]
+layout_mode = 2
+text = "Сохранить"
+
+[node name="LoadButton" type="Button" parent="TopBar/HBox"]
+layout_mode = 2
+text = "Загрузить"
+
+[node name="Screens" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HubScreen" type="Control" parent="Screens"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_hub")
+
+[node name="Title" type="Label" parent="Screens/HubScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -80.0
+offset_right = 150.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+text = "ГЛАВНЫЙ ТЕРМИНАЛ"
+
+[node name="InfoLabel" type="Label" parent="Screens/HubScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -20.0
+offset_right = 150.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+text = "Выберите раздел."
+
+[node name="MissionButton" type="Button" parent="Screens/HubScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 40.0
+offset_right = 100.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Перейти к отряду"
+
+[node name="SquadScreen" type="Control" parent="Screens"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_squad")
+
+[node name="Title" type="Label" parent="Screens/SquadScreen"]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 400.0
+offset_bottom = 60.0
+text = "СБОРКА ОТРЯДА"
+
+[node name="BotList" type="VBoxContainer" parent="Screens/SquadScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 20.0
+offset_top = 80.0
+offset_right = -20.0
+offset_bottom = -120.0
+
+[node name="PolicyOptionButton" type="OptionButton" parent="Screens/SquadScreen"]
+layout_mode = 1
+anchors_preset = 10
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -90.0
+offset_right = 150.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="InfoLabel" type="Label" parent="Screens/SquadScreen"]
+layout_mode = 1
+anchors_preset = 10
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -40.0
+offset_right = 200.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+text = ""
+
+[node name="ChargeButton" type="Button" parent="Screens/SquadScreen"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -90.0
+offset_right = 100.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Зарядить отряд"
+
+[node name="StartButton" type="Button" parent="Screens/SquadScreen"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -40.0
+offset_right = 100.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Запустить миссию"
+
+[node name="MissionScreen" type="Control" parent="Screens"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_mission")
+
+[node name="Title" type="Label" parent="Screens/MissionScreen"]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 400.0
+offset_bottom = 60.0
+text = "МИССИЯ: ДОБЫЧА"
+
+[node name="ProgressBar" type="ProgressBar" parent="Screens/MissionScreen"]
+layout_mode = 1
+anchors_preset = 10
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -30.0
+offset_right = 200.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TimeLabel" type="Label" parent="Screens/MissionScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 0.0
+offset_right = 100.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+text = "0 / 30"
+
+[node name="BotStatusLabel" type="Label" parent="Screens/MissionScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 20.0
+offset_top = 80.0
+offset_right = -20.0
+offset_bottom = 150.0
+text = ""
+
+[node name="LogLabel" type="Label" parent="Screens/MissionScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 20.0
+offset_top = 160.0
+offset_right = -20.0
+offset_bottom = -20.0
+text = ""
+
+[node name="ResearchScreen" type="Control" parent="Screens"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_research")
+
+[node name="Title" type="Label" parent="Screens/ResearchScreen"]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 400.0
+offset_bottom = 60.0
+text = "ИССЛЕДОВАНИЯ"
+
+[node name="TechList" type="VBoxContainer" parent="Screens/ResearchScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 20.0
+offset_top = 80.0
+offset_right = -20.0
+offset_bottom = -60.0
+
+[node name="ResearchStatusLabel" type="Label" parent="Screens/ResearchScreen"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -50.0
+offset_right = 200.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+text = ""
+
+[node name="ArchiveScreen" type="Control" parent="Screens"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_archive")
+
+[node name="Title" type="Label" parent="Screens/ArchiveScreen"]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 400.0
+offset_bottom = 60.0
+text = "АРХИВ"
+
+[node name="ArchiveList" type="VBoxContainer" parent="Screens/ArchiveScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 20.0
+offset_top = 80.0
+offset_right = 300.0
+offset_bottom = -20.0
+
+[node name="TextLabel" type="Label" parent="Screens/ArchiveScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 320.0
+offset_top = 80.0
+offset_right = -20.0
+offset_bottom = -20.0
+text = ""
+
+[node name="CrisisModal" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -150.0
+offset_right = 250.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_crisis")
+
+[node name="VBox" type="VBoxContainer" parent="CrisisModal"]
+layout_mode = 2
+theme_override_constants/separation = 15
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+
+[node name="TitleLabel" type="Label" parent="CrisisModal/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "КРИЗИС"
+
+[node name="TextLabel" type="Label" parent="CrisisModal/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Описание кризиса"
+
+[node name="ChoicesBox" type="VBoxContainer" parent="CrisisModal/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GeneratorTimer" type="Timer" parent="."]
+wait_time = 6.0
+autostart = true
+
+[connection signal="timeout" from="GeneratorTimer" to="Main" method="_on_generator_timer_timeout"]
+[connection signal="pressed" from="TopBar/HBox/HubButton" to="Main" method="_on_hub_button_pressed"]
+[connection signal="pressed" from="TopBar/HBox/SquadButton" to="Main" method="_on_squad_button_pressed"]
+[connection signal="pressed" from="TopBar/HBox/ResearchButton" to="Main" method="_on_research_button_pressed"]
+[connection signal="pressed" from="TopBar/HBox/ArchiveButton" to="Main" method="_on_archive_button_pressed"]
+[connection signal="pressed" from="TopBar/HBox/SaveButton" to="Main" method="_on_save_button_pressed"]
+[connection signal="pressed" from="TopBar/HBox/LoadButton" to="Main" method="_on_load_button_pressed"]
+[connection signal="pressed" from="Screens/HubScreen/MissionButton" to="Main" method="_on_hub_mission_button_pressed"]
